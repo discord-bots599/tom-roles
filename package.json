@@ -1,7 +1,7 @@
 {
-  "name": "t-roles",
+  "name": "tom-roles",
   "version": "1.0.0",
-  "description": "T-Roles is an interactive Discord bot designed to manage server roles through reactions. Users can self-assign roles by reacting to messages with specific emojis, allowing for easy and efficient role management. This bot is perfect for communities that want to streamline their role assignment process and engage members in a user-friendly way.",
+  "description": "Random some Tom says",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
