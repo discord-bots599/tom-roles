@@ -10,7 +10,7 @@ const client = new Client({
   ],
 });
 
-const CHANNEL_ID = '1208061907484016661';
+const CHANNEL_ID = '559253806135640082';
 const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
 
 async function readConfigAndMessages() {
