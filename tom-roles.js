@@ -28,8 +28,7 @@ async function sendRandomMessageAboutTom(pic = false) {
       channel.send(
         'https://media.discordapp.net/attachments/559253806135640082/1213989645432520835/1920x1080-Bruno-Crackhead-Carl-txt.png'
       );
-    }
-    if (channel) {
+    } else if (channel) {
       channel.send(randomMessage);
     }
   } catch (err) {
@@ -51,7 +50,7 @@ async function startRandomMessageInterval() {
 }
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}! v2.1`);
+  console.log(`Logged in as ${client.user.tag}! v2.2`);
   startRandomMessageInterval();
 
   client.on('messageCreate', async (message) => {
