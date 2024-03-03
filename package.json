@@ -1,6 +1,6 @@
 {
   "name": "tom-roles",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Random some Tom says",
   "main": "tom-roles.js",
   "scripts": {
