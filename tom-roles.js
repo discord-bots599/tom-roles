@@ -21,13 +21,12 @@ async function readConfigAndMessages() {
 
 async function sendRandomMessageAboutTom(pic = false) {
   try {
-    const { messages } = await readConfigAndMessages();
+    const { messages, images } = await readConfigAndMessages();
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    const randomImage = images[Math.floor(Math.random() * messages.length)];
     const channel = await client.channels.fetch(CHANNEL_ID);
     if (channel && pic) {
-      channel.send(
-        'https://media.discordapp.net/attachments/559253806135640082/1213989645432520835/1920x1080-Bruno-Crackhead-Carl-txt.png'
-      );
+      channel.send(randomImage);
     } else if (channel) {
       channel.send(randomMessage);
     }
@@ -50,7 +49,7 @@ async function startRandomMessageInterval() {
 }
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}! v2.3`);
+  console.log(`Logged in as ${client.user.tag}! v2.4`);
   startRandomMessageInterval();
 
   client.on('messageCreate', async (message) => {
@@ -58,7 +57,7 @@ client.once('ready', async () => {
       message.content.toLowerCase() === '!crackheadpic' &&
       !message.author.bot
     ) {
-      sendRandomMessageAboutTom(true); // true is for sending a pic
+      sendRandomMessageAboutTom(true); // true is for sending a pic - false by default
     } else if (
       message.content.toLowerCase() === '!crackhead' &&
       !message.author.bot
