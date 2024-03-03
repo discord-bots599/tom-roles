@@ -1,5 +1,6 @@
 require('dotenv').config();
 const fs = require('fs');
+const path = require('path');
 const { Client, GatewayIntentBits } = require('discord.js');
 
 const client = new Client({
@@ -12,9 +13,9 @@ const client = new Client({
 
 const CHANNEL_ID = '559253806135640082';
 const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
-
 async function readConfigAndMessages() {
-  const data = await fs.promises.readFile('tomMessages.json', 'utf8');
+  const filePath = path.join(__dirname, 'tomMessages.json');
+  const data = await fs.promises.readFile(filePath, 'utf8');
   return JSON.parse(data);
 }
 
@@ -46,7 +47,7 @@ async function startRandomMessageInterval() {
 }
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  console.log(`Logged in as ${client.user.tag}! Lets go!`);
   startRandomMessageInterval();
 });
 
