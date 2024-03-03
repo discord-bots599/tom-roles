@@ -50,17 +50,20 @@ async function startRandomMessageInterval() {
 }
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}! v2.2`);
+  console.log(`Logged in as ${client.user.tag}! v2.3`);
   startRandomMessageInterval();
 
   client.on('messageCreate', async (message) => {
-    if (message.content.toLowerCase() === '!crackhead' && !message.author.bot) {
-      sendRandomMessageAboutTom();
-    } else if (
+    if (
       message.content.toLowerCase() === '!crackheadpic' &&
       !message.author.bot
     ) {
-      sendRandomMessageAboutTom(true);
+      sendRandomMessageAboutTom(true); // true is for sending a pic
+    } else if (
+      message.content.toLowerCase() === '!crackhead' &&
+      !message.author.bot
+    ) {
+      sendRandomMessageAboutTom();
     }
   });
 });
