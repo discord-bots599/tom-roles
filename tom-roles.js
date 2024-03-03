@@ -26,7 +26,6 @@ async function sendRandomMessageAboutTom() {
     const channel = await client.channels.fetch(CHANNEL_ID);
     if (channel) {
       channel.send(randomMessage);
-      console.log(`Sent message: ${randomMessage}`);
     }
   } catch (err) {
     console.error('Failed to send message:', err);
@@ -47,8 +46,14 @@ async function startRandomMessageInterval() {
 }
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}! Lets go!`);
+  console.log(`Logged in as ${client.user.tag}! v2`);
   startRandomMessageInterval();
+
+  client.on('messageCreate', async (message) => {
+    if (message.content.toLowerCase() === '!crackhead' && !message.author.bot) {
+      sendRandomMessageAboutTom();
+    }
+  });
 });
 
 client.login(BOT_TOKEN);
