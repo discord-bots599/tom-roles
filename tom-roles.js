@@ -24,7 +24,7 @@ async function sendRandomMessageAboutTom(pic = false) {
     const { messages, images } = await readConfigAndMessages();
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     console.log(images);
-    const randomImage = images[Math.floor(Math.random() * messages.length)];
+    const randomImage = images[Math.floor(Math.random() * images.length)];
     // const randomImage = images[0];
     console.log(randomImage);
     const channel = await client.channels.fetch(CHANNEL_ID);
@@ -52,7 +52,7 @@ async function startRandomMessageInterval() {
 }
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}! v2.50`);
+  console.log(`Logged in as ${client.user.tag}! v2.51`);
   startRandomMessageInterval();
 
   client.on('messageCreate', async (message) => {
