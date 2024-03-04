@@ -19,14 +19,19 @@ async function readConfigAndMessages() {
   return JSON.parse(data);
 }
 
-async function sendRandomMessageAboutTom() {
+async function sendRandomMessageAboutTom(pic = false) {
   try {
-    const { messages } = await readConfigAndMessages();
+    const { messages, images } = await readConfigAndMessages();
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    console.log(images);
+    // const randomImage = images[Math.floor(Math.random() * messages.length)];
+    const randomImage = images[0];
+    console.log(randomImage);
     const channel = await client.channels.fetch(CHANNEL_ID);
-    if (channel) {
+    if (channel && pic) {
+      channel.send(randomImage);
+    } else if (channel) {
       channel.send(randomMessage);
-      console.log(`Sent message: ${randomMessage}`);
     }
   } catch (err) {
     console.error('Failed to send message:', err);
@@ -47,8 +52,22 @@ async function startRandomMessageInterval() {
 }
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}! Lets go!`);
+  console.log(`Logged in as ${client.user.tag}! v2.45`);
   startRandomMessageInterval();
+
+  client.on('messageCreate', async (message) => {
+    if (
+      message.content.toLowerCase() === '!crackheadpic' &&
+      !message.author.bot
+    ) {
+      sendRandomMessageAboutTom(true); // true is for sending a pic - false by default
+    } else if (
+      message.content.toLowerCase() === '!crackhead' &&
+      !message.author.bot
+    ) {
+      sendRandomMessageAboutTom();
+    }
+  });
 });
 
 client.login(BOT_TOKEN);
