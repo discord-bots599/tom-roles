@@ -56,12 +56,12 @@ client.once('ready', async () => {
 
   client.on('messageCreate', async (message) => {
     if (
-      message.content.toLowerCase() === '!crackheadpic' &&
+      message.content.toLowerCase() === '!tompic' &&
       !message.author.bot
     ) {
       sendRandomMessageAboutTom(true); // true is for sending a pic - false by default
     } else if (
-      message.content.toLowerCase() === '!crackhead' &&
+      message.content.toLowerCase() === '!tom' &&
       !message.author.bot
     ) {
       sendRandomMessageAboutTom();
