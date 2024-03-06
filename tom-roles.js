@@ -11,7 +11,7 @@ const client = new Client({
   ],
 });
 
-const CHANNEL_ID = '559253806135640082';
+const CHANNEL_ID = '559253806135640082'; // General chat of Maledict
 const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
 async function readConfigAndMessages() {
   const filePath = path.join(__dirname, 'tomMessages.json');
@@ -25,7 +25,6 @@ async function sendRandomMessageAboutTom(pic = false) {
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
     console.log(images);
     const randomImage = images[Math.floor(Math.random() * images.length)];
-    // const randomImage = images[0];
     console.log(randomImage);
     const channel = await client.channels.fetch(CHANNEL_ID);
     if (channel && pic) {
