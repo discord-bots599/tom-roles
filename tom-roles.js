@@ -51,14 +51,11 @@ async function startRandomMessageInterval() {
 }
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}! v2.51`);
+  console.log(`Logged in as ${client.user.tag}! v2.52`);
   startRandomMessageInterval();
 
   client.on('messageCreate', async (message) => {
-    if (
-      message.content.toLowerCase() === '!tompic' &&
-      !message.author.bot
-    ) {
+    if (message.content.toLowerCase() === '!tompic' && !message.author.bot) {
       sendRandomMessageAboutTom(true); // true is for sending a pic - false by default
     } else if (
       message.content.toLowerCase() === '!tom' &&
