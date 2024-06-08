@@ -51,7 +51,7 @@ async function startRandomMessageInterval() {
 }
 
 client.once('ready', async () => {
-  console.log(`Logged in as ${client.user.tag}! v1.1.28`);
+  console.log(`Logged in as ${client.user.tag}! v1.1.29`);
   startRandomMessageInterval();
 
   client.on('messageCreate', async (message) => {
