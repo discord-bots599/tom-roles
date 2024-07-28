@@ -38,10 +38,11 @@ async function sendRandomMessageAboutTom(pic = false) {
 }
 
 async function startRandomMessageInterval() {
-  const { intervalMinutes } = await readConfigAndMessages();
-  const intervalMilliseconds = intervalMinutes * 60 * 1000;
-
   function scheduleNextMessage() {
+    // Calculate a random interval between 1 day (24 hours) and 7 days (168 hours)
+    const intervalHours = 24 + Math.random() * (168 - 24);
+    const intervalMilliseconds = intervalHours * 60 * 60 * 1000;
+
     setTimeout(() => {
       sendRandomMessageAboutTom().then(scheduleNextMessage);
     }, intervalMilliseconds);
